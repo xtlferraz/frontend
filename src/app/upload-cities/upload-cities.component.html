@@ -1,0 +1,54 @@
+<div class="text-center">
+  <mat-card>
+    <input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)"
+      accept=".csv" />
+  </mat-card>
+</div>
+
+
+
+<mat-card-content>
+  <form [formGroup]="cityTable">
+    <table class="table table-border">
+      <thead class="text-nowrap">
+        <th>Nome <span class="ui-column-resizer" dragableColumn> </span></th>
+        <th>População<span class="ui-column-resizer" dragableColumn> </span></th>
+        <th>Estado<span class="ui-column-resizer" dragableColumn> </span></th>
+        <th>Ação</th>
+      </thead>
+      <tbody>
+        <ng-container formArrayName="tableRows" *ngFor="let group of getFormControls.controls ; let i=index">
+          <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
+            <td>
+              <mat-form-field>
+                <input matInput type="text" formControlName="name">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput type="tetx" formControlName="population">
+              </mat-form-field>
+            </td>
+            <td>
+
+              <select formControlName="state_id" id="state_id">
+                <option *ngFor="let state of state_id; let i = index" [value]="state_id[i].id">
+                  {{state_id[i].name}}
+                </option>
+              </select>
+
+            </td>
+            <td>
+              <mat-icon class="delete" (click)="deleteRow(i)">delete_forever</mat-icon>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <div class="action-container">
+      <button mat-raised-button [disabled]="getFormControls.controls.length == 0" type="submit"
+        (click)="submitForm()">Enviar</button>
+    </div>
+  </form>
+  <div class="footer"></div>
+</mat-card-content>

@@ -1,0 +1,23 @@
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Adicionar Estado</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nome:</label>
+      <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name">
+    </div>
+
+    <!-- Image Preview -->
+    <div class="form-group">
+      <div class="preview" *ngIf="preview && preview !== null">
+        <img [src]="preview" [alt]="addForm.value.name" style="width: 300px;height: auto;">
+      </div>
+    </div>
+
+    <!-- File Input -->
+    <div class="form-group">
+      <input type="file" (change)="uploadFile($event)">
+    </div>
+
+    <button class="btn btn-success">Add</button>
+  </form>
+</div>

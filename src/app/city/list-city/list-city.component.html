@@ -1,0 +1,30 @@
+<div class="col-md-12 city-container">
+  <h2 class="mt-5 text-center"> Cidades</h2>
+  <button class="btn btn-danger" style="width:100px" (click)="addCity()"> Adicionar </button>
+  <table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>id</th>
+        <th>Nome</th>
+        <th>QTD. Populacional</th>
+        <th>Estado</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of citys | paginate: config ">
+        <td class="hidden"></td>
+        <td>{{ city.id }}</td>
+        <td>{{ city.name }}</td>
+        <td>{{ city.population_quantity }}</td>
+        <td>{{ city.state_id }}</td>
+        <td><button class="btn btn-success" (click)="deleteCity(city)"> Delete</button>
+          <button class="btn btn-success" (click)="editCity(city)" style="margin-left: 20px;"> Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="pageChanged($event)" responsive="true" previousLabel="Anterior"
+    nextLabel="Próximo">
+  </pagination-controls>
+</div>

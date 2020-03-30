@@ -1,0 +1,31 @@
+<div class="col-md-6 city-container">
+  <h2 class="text-center">Adicionar Cidade</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="hidden">
+      <input type="hidden" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
+    </div>
+    <div class="form-group">
+      <label for="name">Nome:</label>
+      <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="populationQuantity">Quantidade Populacional:</label>
+      <input formControlName="populationQuantity" placeholder="Quantidade Populacional" name="populationQuantity"
+        class="form-control" id="populationQuantity">
+    </div>
+
+    <div class="form-group">
+      <label for="stateId">Estado:</label>
+      <select formControlName="stateId" id="stateId">
+        <option *ngFor="let state of stateId; let i = index" [value]="stateId[i].id">
+          {{stateId[i].name}}
+        </option>
+      </select>
+    </div>
+
+
+
+    <button class="btn btn-success">Adicionar</button>
+  </form>
+</div>

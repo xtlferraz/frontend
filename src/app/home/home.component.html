@@ -1,0 +1,41 @@
+<div class="col-md-12 home-container text-center mt-5">
+  <h2 class="text-center">Dados do Estado </h2>
+  <form [formGroup]="addForm" class="mt-2">
+    <div class="form-group">
+      <label for="stateId">Estado:</label>
+      <select class="custom-select w-25 ml-2" formControlName="state" id="state"
+        (change)="changeState($event.target.value)">
+        <option *ngFor="let s of state; let i = index" [value]="state[i].id">
+          {{state[i].name}}
+        </option>
+      </select>
+    </div>
+  </form>
+
+  <table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>id</th>
+        <th>Nome</th>
+        <th>Bandeira</th>
+        <th>População</th>
+        <th>Cota Populacional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="states">
+        <td class="hidden"></td>
+        <td>{{states.id}} </td>
+        <td>{{states.name}}</td>
+        <td>http://localhost:3000/state/image/{{states.flag}}</td>
+        <td>{{states.population}}</td>
+        <td>{{states.populationCoast}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="states">
+    <img src="http://localhost:3000/state/image/{{states.flag}}" alt="{{states.name}}" style="width: 400;height: 400;">
+  </div>
+
+</div>

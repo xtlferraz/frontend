@@ -1,0 +1,33 @@
+<div class=" col-md-12 state-container">
+  <h2 class="mt-5 text-center"> Estados</h2>
+  <button class="btn btn-danger" style="width:100px" (click)="addState()"> Adicionar</button>
+  <table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>id</th>
+        <th>Nome</th>
+        <th>Bandeira</th>
+        <th>População</th>
+        <th>Cota Populacional</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let state of states | paginate: config">
+        <td class="hidden"></td>
+        <td>{{state.id}} </td>
+        <td>{{state.name}}</td>
+        <td>http://localhost:3000/state/getImage/{{state.flag}}</td>
+        <td>{{state.population}}</td>
+        <td>{{state.population_cost}}</td>
+        <td><button class="btn btn-success" (click)="deleteState(state)"> Delete</button>
+          <button class="btn btn-success" (click)="editState(state)" style="margin-left: 20px;"> Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="pageChanged($event)" responsive="true" previousLabel="Anterior"
+    nextLabel="Próximo">
+  </pagination-controls>
+  <div class="footer"></div>
+</div>
