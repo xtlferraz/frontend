@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
@@ -30,8 +31,8 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.7",
-    "@angular/cli": "~9.0.7",
-    "@angular/compiler-cli": "~9.0.7",
+    "@angular/cli": "^9.1.0",
+    "@angular/compiler-cli": "^9.0.7",
     "@angular/language-service": "~9.0.7",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
