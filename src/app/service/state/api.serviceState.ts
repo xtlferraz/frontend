@@ -10,7 +10,7 @@ import { retry, catchError } from 'rxjs/operators';
 export class ApiServiceState {
 
   constructor(private http: HttpClient) { }
-  baseUrl = 'http://localhost:4200/api/state/';
+  baseUrl = 'https://citystate.herokuapp.com/state/';
 
   geStates(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(`${this.baseUrl}all`);
